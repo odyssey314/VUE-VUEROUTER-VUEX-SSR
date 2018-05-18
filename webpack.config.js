@@ -55,7 +55,7 @@ if (isDev) {
       {
         loader: 'postcss-loader',
         options: {
-          sourceMap: true,
+          sourceMap: true
         }
       },
       'stylus-loader'
@@ -66,7 +66,7 @@ if (isDev) {
     port: 8000,
     host: '0.0.0.0',
     overlay: {
-      errors: true,
+      errors: true
     },
     hot: true
   }
@@ -90,21 +90,21 @@ if (isDev) {
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true,
+              sourceMap: true
             }
           },
           'stylus-loader'
         ]
       })
-    },
+    }
   )
   config.plugins.push(
     new ExtractPlugin('styles.[contentHash:8].css'),
     new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor'
+      name: 'vendor'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-        name: 'runtime'
+      name: 'runtime'
     })
   )
 }
