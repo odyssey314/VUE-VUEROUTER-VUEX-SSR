@@ -1,24 +1,25 @@
 <template>
   <section class="real-app">
-      <input 
+      <input
         type="text"
         class="add-input"
         autofocus="autofocus"
         placeholder="接下去要做什么？"
         @keyup.enter="addTodo"
       >
-      <item 
+      <item
       :todo="todo"
       v-for="todo in filteredTodos"
       :key="todo.id"
       @del="deleteTodo"
       />
-      <tabs 
-      :filter="filter" 
+      <tabs
+      :filter="filter"
       :todos="todos"
       @toggle="toggleFilter"
       @clearAllCompleted="clearAllCompleted"
       />
+      <!-- <router-view/> -->
   </section>
 </template>
 
@@ -27,6 +28,24 @@ import Item from './item.vue'
 import Tabs from './tabs.vue'
 let id = 0
 export default {
+  beforeRouteEnter (to, from, next) {
+    console.log('todo before enter', this)
+    next(vm => {
+      console.log('after enter vm.id is ', vm.id)
+    })
+  },
+  beforeRouteUpdate (to, from, next) {
+    console.log('todo update enter')
+    next()
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log('todo before leave')
+    next()
+  },
+  props: ['id'],
+  mounted () {
+    console.log('todo mounted')
+  },
   data () {
     return {
       todos: [],
@@ -79,19 +98,19 @@ export default {
     margin 0
     width 100%
     font-size 24px
-    font-family inherit 
-    font-weight inherit 
+    font-family inherit
+    font-weight inherit
     line-height 1.4em
     border 0
-    outline none 
-    color inherit 
+    outline none
+    color inherit
     padding 6px
     border 1px solid #999
     box-shadow inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2)
     box-sizing border-box
-    font-smoothing antialiased 
+    font-smoothing antialiased
     padding 16px 16px 16px 60px
-    boder none 
+    boder none
     box-shadow inset 0 -2px 1px rgba(0, 0, 0, 0.03)
 }
 </style>
