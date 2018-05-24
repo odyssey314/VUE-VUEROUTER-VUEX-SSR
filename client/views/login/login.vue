@@ -1,9 +1,15 @@
 <template>
-  <h1>
-    <span>This is Login</span>
-  </h1>
+    <div>This is Login</div>
 </template>
 
+
+<script>
+export default {
+  metaInfo: {
+    title: 'Login Page'
+  }
+}
+</script>
 
 <style lang="stylus" scoped>
 .login-form

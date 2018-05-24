@@ -7,7 +7,7 @@ export default [
     redirect: '/app'
   },
   {
-    path: '/app/:id',
+    path: '/app',
     props: true,
     // props: (route) => ({
     //   id: route.query.b
