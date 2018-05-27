@@ -2,14 +2,16 @@
   <div id="app">
       <div id="cover"></div>
       <Header></Header>
-      <p>{{fullName}} {{counter}}</p>
-      <router-link to="/app/123">app123</router-link>
+      <!-- <p>{{fullName}} {{counter}}</p> -->
+      <!-- <router-link to="/app/123">app123</router-link>
       <router-link to="/app/456">app456</router-link>
-      <router-link to="/login">login</router-link>
+      <router-link to="/login">login</router-link> -->
       <!-- <todo></todo> -->
       <transition name="fade">
-         <router-view/>
+         <router-view />
       </transition>
+      <button @click="notify">click it</button>
+      <!-- <notification content="test notify" /> -->
       <Footer></Footer>
   </div>
 </template>
@@ -37,12 +39,12 @@ export default {
     // Todo
   },
   mounted () {
-    console.log(this.$store)
+    // console.log(this.$store)
     // let i = 1
-    this.updateCountAsync({
-      num: 5,
-      time: 2000
-    })
+    // this.updateCountAsync({
+    //   num: 5,
+    //   time: 2000
+    // })
     // setInterval(() => {
     //   this.updateCount({
     //     num: i++,
@@ -52,7 +54,13 @@ export default {
   },
   methods: {
     ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount'])
+    ...mapMutations(['updateCount']),
+    notify () {
+      this.$notify({
+        content: 'test $notify',
+        btn: 'close'
+      })
+    }
   },
   computed: {
     ...mapState({
